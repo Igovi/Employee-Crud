@@ -1,0 +1,60 @@
+<div class="panel panel-primary">
+    <div class="panel-body" async >
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th></th>
+            <th>Salário</th>
+            <th></th>
+            <th>Idade</th>
+
+            <th>Editar e Salvar</th>
+            
+            <th>Deletar</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of funcionarios ">
+            <td>{{f.id}}</td>
+            <td id="funcaName" contenteditable='false' >{{f.employee_name}}</td>
+            <td></td>
+            <td id="funcSalary" contenteditable='false' >R$ {{f.employee_salary}}</td>
+            <td></td>
+            <td id="funcAge" contenteditable='false'>{{f.employee_age}}</td>
+            <td>
+              <button (click)="editar(f.id)" class="btn btn-secondary">Editar</button>
+              <button (click)="salvar(f.id)" class="btn btn-success ml-3">Salvar</button>
+            </td>
+            <td>
+                <button (click)="deletar(f.id)" class="btn btn-danger">Deletar</button>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<hr>
+  <h3 class="ml-3">Adicionar Funcionário</h3>
+<div [hidden]="submitted" style="width: 400px;">
+    <form class="ml-3"  (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input #name type="text" class="form-control" formControlName="name"  required>
+        </div>
+        <div class="form-group">
+            <label for="name">Salário</label>
+            <input #salary type="text" class="form-control" formControlName="salary" required>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Idade</label>
+            <input #age type="text" class="form-control" formControlName="age" required>
+        </div>
+
+        <button  type='button' (click)="adicionar(name.value,salary.value,age.value)" class="btn btn-success">Adicionar</button>
+    </form>
+</div>
